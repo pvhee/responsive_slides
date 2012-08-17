@@ -1,0 +1,4 @@
+name = Responsive Slides
+description = Include ResponsiveSlides.js library for responsive slideshows
+core = 7.x
+dependencies[] = oc_promote

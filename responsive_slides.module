@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Implements hook_library().
+ */
+function responsive_slides_library() {
+  $libraries['responsive_slides'] = array(
+    'title' => 'responsive_slides',
+    'version' => 1.32,
+    'js' => array(
+      array(
+        'type' => 'file',
+        'data' => libraries_get_path('responsive_slides') . '/responsiveslides.min.js',
+        'group' => JS_LIBRARY,
+        'preprocess' => FALSE,
+      ),
+    ),
+    'css' => array(
+      libraries_get_path('responsive_slides') . '/responsiveslides.css' => array(
+        'type' => 'file',
+        'media' => 'screen',
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function responsive_slides_preprocess_views_view(&$vars) {
+  $view = $vars['view'];
+
+  // Add the JS and CSS
+  if ($view->name == 'promoted_content_big_blocks') {
+    if (!empty($view->result)) {
+      drupal_add_library('responsive_slides', 'responsive_slides');
+      drupal_add_js(drupal_get_path('module', 'responsive_slides') . '/responsive_slides.js');
+    }
+  }
+}

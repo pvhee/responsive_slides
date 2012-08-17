@@ -1,0 +1,3 @@
+libraries[responsive_slides][type] = "libraries"
+libraries[responsive_slides][download][type] = "file"
+libraries[responsive_slides][download][url] = "https://github.com/viljamis/ResponsiveSlides.js/zipball/v1.32"
